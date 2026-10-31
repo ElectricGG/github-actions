@@ -1,0 +1,13 @@
+bin/
+obj/
+node_modules/
+dist/
+.angular/
+.vs/
+*.user
+.env
+.env.*
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
