@@ -52,12 +52,12 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 1, paso 1: crear el repo en GitHub y publicar el commit inicial.
+**Paso actual:** módulo 1, paso 2: escribir y ejecutar el primer workflow.
 
 ## Decisiones
 
 - Modo proyecto: un solo sistema que crece, más parecido al trabajo real que ejemplos sueltos.
-- Repo público en la cuenta `ElectricGG`: los runners estándar son gratis en repos públicos.
+- Repo público `ElectricGG/github-actions`: los runners estándar son gratis en repos públicos.
 - Organización gratuita de GitHub desde el hito 11: permite practicar workflows compartidos y políticas.
 - Azure como nube: reutiliza experiencia previa y `az` ya está instalado.
 - Clústeres locales en lugar de AKS: AKS cobra aunque no se use.
