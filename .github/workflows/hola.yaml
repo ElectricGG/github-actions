@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "MAQUINA=$(hostname) CARPETA=$(pwd)"
-      - run: cat mensaje.txt
+      - run: echo "leer corrio despues de saludar"
