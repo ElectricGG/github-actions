@@ -11,4 +11,4 @@ jobs:
   leer:
     runs-on: ubuntu-latest
     steps:
-      -run: cat mensaje.txt
+      - run: cat mensaje.txt
