@@ -1,6 +1,8 @@
 name: Contexto
 
-on: push
+on: 
+  push:
+  workflow_dispatch:
 
 jobs:
   mostrar:
@@ -9,4 +11,4 @@ jobs:
       - run: echo "Evento ${{ github.event_name }}"
       - run: echo "Rama ${{ github.ref_name }}"
       - run: echo "Usuario ${{ github.actor }}"
-      - run: echo "Commit ${{ github.sha }}"
+      - run: echo "Sha ${{ github.sha }}"
