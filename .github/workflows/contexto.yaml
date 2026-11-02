@@ -12,3 +12,7 @@ jobs:
       - run: echo "Rama ${{ github.ref_name }}"
       - run: echo "Usuario ${{ github.actor }}"
       - run: echo "Sha ${{ github.sha }}"
+      - if: github.event_name == 'push'
+        run: echo "Lanzado por un push"
+      - if: github.event_name == 'workflow_dispatch'
+        run: echo "Lanzado a mano"
