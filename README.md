@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 1, paso 4: romper el workflow a propósito y diagnosticarlo desde el log.
+**Paso actual:** módulo 1, paso 5: comprobar que cada job corre en una máquina aislada.
 
 ## Decisiones
 

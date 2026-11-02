@@ -6,6 +6,9 @@ jobs:
   saludar:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hola desde Github Actions"
-      - run: exit 1
-      - run: echo "¿Llegue aqui?"
+      - run: echo "hola" > mensaje.txt
+
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      -run: cat mensaje.txt
