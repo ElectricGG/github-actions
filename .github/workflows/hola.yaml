@@ -6,9 +6,11 @@ jobs:
   saludar:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "MAQUINA=$(hostname) CARPETA=$(pwd)"
       - run: echo "hola" > mensaje.txt
 
   leer:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "MAQUINA=$(hostname) CARPETA=$(pwd)"
       - run: cat mensaje.txt
