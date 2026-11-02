@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 1, paso 6: comparar máquina y carpeta de cada job para confirmar el aislamiento.
+**Paso actual:** módulo 1, paso 7: ordenar los jobs con `needs` y comprobar que el archivo sigue sin compartirse.
 
 ## Decisiones
 
@@ -63,6 +63,7 @@ Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de segu
 - Clústeres locales en lugar de AKS: AKS cobra aunque no se use.
 - Kubernetes se mantiene en los hitos 15 y 16: aparece en empresas grandes y en entrevistas senior.
 - Workflows `up` y `destroy` desde el hito 8: permiten borrar y recrear la nube durante las pausas.
+- Predicciones solo sobre lo ya explicado: un concepto nuevo se explica primero y se prueba después.
 
 ## Conceptos por reforzar
 
