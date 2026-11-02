@@ -1,0 +1,12 @@
+name: Contexto
+
+on: push
+
+jobs:
+  mostrar:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Evento ${{ github.event_name }}"
+      - run: echo "Rama ${{ github.ref_name }}"
+      - run: echo "Usuario ${{ github.actor }}"
+      - run: echo "Commit ${{ github.sha }}"
