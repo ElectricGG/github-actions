@@ -7,3 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hola desde Github Actions"
+      - run: exit 1
+      - run: echo "¿Llegue aqui?"
