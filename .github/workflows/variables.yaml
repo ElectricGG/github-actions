@@ -15,8 +15,8 @@ jobs:
       - env:
           AMBIENTE: steps
         run: echo "Paso C $AMBIENTE"
-    
-    dos:
-      runs-on: ubuntu-latest
-      steps:
-        - run: echo "Paso C $AMBIENTE"
+
+  dos:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Paso C $AMBIENTE"
