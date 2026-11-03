@@ -1,0 +1,10 @@
+name: Salidas
+
+on: workflow_dispatch
+
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    steps:
+      - run: export NOMBRE=jesus
+      - run: echo "Nombre es [$NOMBRE]"

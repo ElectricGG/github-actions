@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 2, paso 4: alcance y prioridad de las variables `env`.
+**Paso actual:** módulo 2, paso 5: comprobar que una variable de shell no pasa de un step a otro.
 
 ## Decisiones
 
