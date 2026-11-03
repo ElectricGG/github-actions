@@ -1,0 +1,22 @@
+name: Variables
+
+on: workflow_dispatch
+
+env:
+  AMBIENTE: workflow
+
+jobs:
+  uno:
+    runs-on: ubuntu-latest
+    env:
+      AMBIENTE: job
+    steps:
+      - run: echo "Paso A $AMBIENTE"
+      - env:
+          AMBIENTE: steps
+        run: echo "Paso C $AMBIENTE"
+    
+    dos:
+      runs-on: ubuntu-latest
+      steps:
+        - run: echo "Paso C $AMBIENTE"

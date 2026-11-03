@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 2, paso 3: ejecutar pasos según el evento con `if`.
+**Paso actual:** módulo 2, paso 4: alcance y prioridad de las variables `env`.
 
 ## Decisiones
 
@@ -63,6 +63,7 @@ Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de segu
 - Clústeres locales en lugar de AKS: AKS cobra aunque no se use.
 - Kubernetes se mantiene en los hitos 15 y 16: aparece en empresas grandes y en entrevistas senior.
 - Workflows `up` y `destroy` desde el hito 8: permiten borrar y recrear la nube durante las pausas.
+- Runner con versión fija en los workflows reales desde el hito 3: `ubuntu-latest` puede cambiar de versión sin avisar en el repo.
 ## Conceptos por reforzar
 
 - Cada job corre en una máquina limpia y aislada: los archivos no pasan solos de un job a otro.
