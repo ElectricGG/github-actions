@@ -6,6 +6,6 @@ jobs:
   probar:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          export NOMBRE=jesus
-          echo "Nombre es [$NOMBRE]"
+      - id: datos
+        run: echo "nombre=jesus" >> "$GITHUB_OUTPUT"
+      - run: echo "Nombre es [${{ steps.datos.outputs.nombre }}]"
