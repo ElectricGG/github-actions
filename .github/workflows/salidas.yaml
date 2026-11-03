@@ -3,9 +3,16 @@ name: Salidas
 on: workflow_dispatch
 
 jobs:
-  probar:
+  calcular:
     runs-on: ubuntu-latest
+    outputs:
+      nombre: ${{ steps.datos.outputs.nombre }}
     steps:
       - id: datos
         run: echo "nombre=jesus" >> "$GITHUB_OUTPUT"
-      - run: echo "Nombre es [${{ steps.datos.outputs.nombre }}]"
+
+  usar:
+    needs: calcular
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Nombre es [${{ needs.calcular.outputs.nombre }}]"
