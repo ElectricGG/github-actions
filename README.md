@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 2, paso 5: comprobar que una variable de shell no pasa de un step a otro.
+**Paso actual:** módulo 2, paso 6: pasar datos entre steps con `GITHUB_OUTPUT`.
 
 ## Decisiones
 
@@ -67,6 +67,7 @@ Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de segu
 ## Conceptos por reforzar
 
 - Cada job corre en una máquina limpia y aislada: los archivos no pasan solos de un job a otro.
+- Cada `run` es un proceso de shell nuevo: sus variables no pasan al siguiente paso, y una variable vacía no hace fallar el job.
 - Diagnóstico de fallos: `gh run list`, `gh run view <ID> --log-failed` y leer la línea justo encima de `##[error]`.
 
 ## Recursos activos en la nube

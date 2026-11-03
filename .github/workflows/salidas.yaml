@@ -6,5 +6,6 @@ jobs:
   probar:
     runs-on: ubuntu-latest
     steps:
-      - run: export NOMBRE=jesus
-      - run: echo "Nombre es [$NOMBRE]"
+      - run: |
+          export NOMBRE=jesus
+          echo "Nombre es [$NOMBRE]"
