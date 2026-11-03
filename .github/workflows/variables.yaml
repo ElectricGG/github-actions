@@ -13,8 +13,8 @@ jobs:
     steps:
       - run: echo "Paso A $AMBIENTE"
       - env:
-          AMBIENTE: steps
-      - run: echo "Paso B $AMBIENTE"
+          AMBIENTE: step
+        run: echo "Paso B $AMBIENTE"
 
   dos:
     runs-on: ubuntu-latest
