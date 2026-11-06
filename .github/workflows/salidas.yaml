@@ -1,6 +1,17 @@
 name: Salidas
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      nombre:
+        type: string
+        required: true
+      ambiente:
+        type: choice
+        options: [dev, staging, prod]
+
+
+        
 
 jobs:
   calcular:
@@ -9,10 +20,13 @@ jobs:
       nombre: ${{ steps.datos.outputs.nombre }}
     steps:
       - id: datos
-        run: echo "nombre=jesus" >> "$GITHUB_OUTPUT"
+        run: echo "nombre=${{ inputs.nombre }}" >> "$GITHUB_OUTPUT"
 
   usar:
     needs: calcular
     runs-on: ubuntu-latest
     steps:
       - run: echo "Nombre es [${{ needs.calcular.outputs.nombre }}]"
+    steps:
+      - if: ${{ inputs.ambiente }} == 'prod'
+        run: echo "Cuidado: producción"
