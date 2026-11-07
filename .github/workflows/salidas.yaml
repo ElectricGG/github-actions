@@ -11,8 +11,6 @@ on:
         options: [dev, staging, prod]
 
 
-        
-
 jobs:
   calcular:
     runs-on: ubuntu-latest
@@ -27,6 +25,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Nombre es [${{ needs.calcular.outputs.nombre }}]"
-    steps:
-      - if: ${{ inputs.ambiente }} == 'prod'
+      - if: ${{ inputs.ambiente == 'prod' }} 
         run: echo "Cuidado: producción"
