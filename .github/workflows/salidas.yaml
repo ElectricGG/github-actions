@@ -26,4 +26,4 @@ jobs:
     steps:
       - run: echo "Nombre es [${{ needs.calcular.outputs.nombre }}]"
       - if: ${{ inputs.ambiente == 'prod' }} 
-        run: echo "Cuidado: producción"
+        run: 'echo "Cuidado: producción"'
