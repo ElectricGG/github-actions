@@ -55,28 +55,7 @@ jobs:
           echo "prod real aún no permitido"
           exit 1
 
-  avisar-exito:
-    needs: [analizar, desplegar]
-    if: success()
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Todo salió bien en $APP"
-
-  avisar-fallo:
-    needs: [analizar, desplegar]
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Algo falló en $APP"
-
-  avisar-cancelado:
-    needs: [analizar, desplegar]
-    if: cancelled()
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Alguien canceló el run de $APP"
-
-  resumen:
+  avisar:
     needs: [analizar, desplegar]
     if: always()
     runs-on: ubuntu-latest
@@ -84,7 +63,15 @@ jobs:
       ANALIZAR: ${{ needs.analizar.result }}
       DESPLEGAR: ${{ needs.desplegar.result }}
     steps:
-      - run: |
-          echo "Resumen de $APP"
+      - name: Resumen
+        run: |
           echo "analizar:  $ANALIZAR"
           echo "desplegar: $DESPLEGAR"
+      - if: needs.desplegar.result == 'success'
+        run: echo "Todo salió bien en $APP"
+      - if: needs.desplegar.result == 'failure'
+        run: echo "Algo falló en $APP"
+      - if: needs.desplegar.result == 'cancelled'
+        run: echo "Alguien canceló el run de $APP"
+      - if: needs.desplegar.result == 'skipped'
+        run: echo "No había nada que desplegar en $APP"
