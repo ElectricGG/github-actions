@@ -46,6 +46,8 @@ jobs:
       DESTINO: ${{ needs.analizar.outputs.destino }}
     steps:
       - run: echo "Desplegando $APP a $DESTINO"
+      - name: Simular tiempo de despliegue
+        run: sleep 20
       - if: inputs.simulacro
         run: echo "(simulacro)"
       - if: needs.analizar.outputs.destino == 'prod' && inputs.simulacro == false
@@ -53,9 +55,36 @@ jobs:
           echo "prod real aún no permitido"
           exit 1
 
-  avisar:
+  avisar-exito:
+    needs: [analizar, desplegar]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Todo salió bien en $APP"
+
+  avisar-fallo:
     needs: [analizar, desplegar]
     if: failure()
     runs-on: ubuntu-latest
     steps:
       - run: echo "Algo falló en $APP"
+
+  avisar-cancelado:
+    needs: [analizar, desplegar]
+    if: cancelled()
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Alguien canceló el run de $APP"
+
+  resumen:
+    needs: [analizar, desplegar]
+    if: always()
+    runs-on: ubuntu-latest
+    env:
+      ANALIZAR: ${{ needs.analizar.result }}
+      DESPLEGAR: ${{ needs.desplegar.result }}
+    steps:
+      - run: |
+          echo "Resumen de $APP"
+          echo "analizar:  $ANALIZAR"
+          echo "desplegar: $DESPLEGAR"
