@@ -1,0 +1,61 @@
+name: Decidir
+
+on:
+  push:
+    branches: [main, 'feature/**']
+  workflow_dispatch:
+    inputs:
+      ambiente:
+        type: choice
+        options: [dev, staging, prod]
+        default: dev
+      simulacro:
+        type: boolean
+        default: true
+
+env:
+  APP: shoplite
+
+jobs:
+  analizar:
+    runs-on: ubuntu-latest
+    outputs:
+      destino: ${{ steps.calculo.outputs.destino }}
+    steps:
+      - id: calculo
+        env:
+          EVENTO: ${{ github.event_name }}
+          RAMA: ${{ github.ref_name }}
+          AMBIENTE: ${{ inputs.ambiente }}
+        run: |
+          if [ "$EVENTO" = "workflow_dispatch" ]; then
+            destino="$AMBIENTE"
+          elif [ "$EVENTO" = "push" ] && [ "$RAMA" = "main" ]; then
+            destino="staging"
+          else
+            destino="ninguno"
+          fi
+          echo "Evento=$EVENTO rama=$RAMA destino=$destino"
+          echo "destino=$destino" >> "$GITHUB_OUTPUT"
+
+  desplegar:
+    needs: analizar
+    if: needs.analizar.outputs.destino != 'ninguno'
+    runs-on: ubuntu-latest
+    env:
+      DESTINO: ${{ needs.analizar.outputs.destino }}
+    steps:
+      - run: echo "Desplegando $APP a $DESTINO"
+      - if: inputs.simulacro
+        run: echo "(simulacro)"
+      - if: needs.analizar.outputs.destino == 'prod' && inputs.simulacro == false
+        run: |
+          echo "prod real aún no permitido"
+          exit 1
+
+  avisar:
+    needs: [analizar, desplegar]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Algo falló en $APP"

@@ -4,7 +4,7 @@
 **Nivel inicial:** conoce para qué sirven pipelines, Docker, Kubernetes y despliegues, pero nunca escribió workflows a mano.
 **Entorno:** Windows 11, 1 a 2 h al día y más los fines de semana. Gasto bajo en Azure, con recursos apagados al terminar.
 **Proyecto:** `shoplite`, tienda con API de catálogo y de pedidos en .NET y web en Angular. La app base la entrega el tutor; los workflows los escribe el alumno.
-**Última sesión:** 2026-11-02
+**Última sesión:** 2026-11-06
 
 ## Malla
 
@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 2, paso 8: recibir parámetros con `inputs` en `workflow_dispatch`.
+**Paso actual:** módulo 2, paso 9 (cierre): entregable del módulo, un workflow que decide qué hacer según el evento y la rama.
 
 ## Decisiones
 
@@ -69,6 +69,11 @@ Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de segu
 - Cada job corre en una máquina limpia y aislada: los archivos no pasan solos de un job a otro.
 - Cada `run` es un proceso de shell nuevo: sus variables no pasan al siguiente paso, y una variable vacía no hace fallar el job.
 - Diagnóstico de fallos: `gh run list`, `gh run view <ID> --log-failed` y leer la línea justo encima de `##[error]`.
+- Un 403 de la API casi siempre es de identidad o permisos, no del YAML: revisar primero `gh auth status` (la cuenta activa debe ser `ElectricGG`).
+- `gh workflow run` usa el YAML del repo remoto, no el local: sin `git push` los cambios no existen para GitHub.
+- "Workflow does not have X trigger", o un run de 0 s con la ruta del archivo como nombre, indica YAML inválido. En texto sin comillas, `: ` rompe el YAML; en `run:` usar `|`.
+- Un `if` va completo dentro de `${{ }}` (o sin `${{ }}`), nunca a medias: `${{ a }} == 'b'` es un texto no vacío y siempre da verdadero.
+- `${{ }}` se pega en el script antes de que bash lo lea: los inputs van por `env:` para evitar inyección.
 
 ## Recursos activos en la nube
 
