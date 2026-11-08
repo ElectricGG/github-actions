@@ -1,0 +1,29 @@
+name: CI Catálogo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-24.04          # versión fija, no -latest
+    defaults:
+      run:
+        working-directory: apps/catalogo   # todos los run: arrancan aquí
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: apps/catalogo/global.json
+
+      - name: Restaurar
+        run: dotnet restore
+
+      - name: Compilar
+        run: dotnet build -c Release --no-restore
+
+      - name: Tests
+        run: dotnet test -c Release --no-build
