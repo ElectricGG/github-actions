@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 3, paso 1: primer CI de .NET con `actions/checkout`, `setup-dotnet`, build y tests.
+**Paso actual:** módulo 3, paso 2: cobertura de tests y publicarla como artifact. Línea base sin caché (run 42516959221): Restaurar 4 s, Compilar 5 s, Tests 4 s.
 
 ## Decisiones
 
