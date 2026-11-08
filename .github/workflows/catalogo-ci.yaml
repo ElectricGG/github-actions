@@ -26,4 +26,11 @@ jobs:
         run: dotnet build -c Release --no-restore
 
       - name: Tests
-        run: dotnet test -c Release --no-build
+        run: dotnet test -c Release --no-build --collect:"XPlat Code Coverage" --results-directory ./resultados
+
+      - name: Subir cobertura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobertura
+          path: apps/catalogo/resultados
