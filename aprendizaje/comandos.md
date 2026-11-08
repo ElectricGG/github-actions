@@ -17,6 +17,9 @@
 | `gh run view --log` | Muestra el log completo de una ejecución | `gh run view 41178508234 --log` |
 | `gh run view --log-failed` | Muestra solo los pasos que fallaron | `gh run view 41387353064 --log-failed` |
 | `findstr` | Filtra líneas de una salida en Windows | `gh run view 41389593958 --log \| findstr "MAQUINA="` |
+| `gh workflow run` | Lanza un workflow con `workflow_dispatch` y sus inputs | `gh workflow run salidas.yaml -f nombre=ana -f ambiente=prod` |
+| `gh run cancel` | Cancela una ejecución en curso | `gh run cancel 42419022705` |
+| `gh auth status` | Muestra las cuentas de `gh` y cuál está activa | `gh auth status` |
 
 ## Docker
 

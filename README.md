@@ -4,7 +4,7 @@
 **Nivel inicial:** conoce para qué sirven pipelines, Docker, Kubernetes y despliegues, pero nunca escribió workflows a mano.
 **Entorno:** Windows 11, 1 a 2 h al día y más los fines de semana. Gasto bajo en Azure, con recursos apagados al terminar.
 **Proyecto:** `shoplite`, tienda con API de catálogo y de pedidos en .NET y web en Angular. La app base la entrega el tutor; los workflows los escribe el alumno.
-**Última sesión:** 2026-11-06
+**Última sesión:** 2026-11-08
 
 ## Malla
 
@@ -15,8 +15,8 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 | # | Módulo | Qué aprenderás | Práctica o entregable | Requiere | Horas | Estado |
 |---|--------|----------------|-----------------------|----------|-------|--------|
 | 1 | Anatomía de un workflow | Eventos, jobs, steps, runners y logs | Primer workflow escrito a mano y depurado desde los logs | — | 2 | terminado |
-| 2 | El lenguaje de Actions | Contextos, expresiones, `if`, variables, outputs y `workflow_dispatch` | Workflow que decide qué hacer según el evento y la rama | 1 | 3 | en curso |
-| 3 | CI de la API | `setup-dotnet`, tests, cobertura, artifacts y caché | CI de .NET con tiempos medidos antes y después de la caché | 2 | 3 | pendiente |
+| 2 | El lenguaje de Actions | Contextos, expresiones, `if`, variables, outputs y `workflow_dispatch` | Workflow que decide qué hacer según el evento y la rama | 1 | 3 | terminado |
+| 3 | CI de la API | `setup-dotnet`, tests, cobertura, artifacts y caché | CI de .NET con tiempos medidos antes y después de la caché | 2 | 3 | en curso |
 | 4 | Pipelines reales | Matrices, `needs`, service containers, `concurrency` y `timeout` | Tests de integración con Postgres en varias versiones | 3 | 3 | pendiente |
 | 5 | Flujo de PR | Rulesets, checks obligatorios y CODEOWNERS | `main` protegida: nada entra sin CI en verde | 4 | 3 | pendiente |
 
@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 2, paso 9 (cierre): entregable del módulo, un workflow que decide qué hacer según el evento y la rama.
+**Paso actual:** módulo 3, paso 1: primer CI de .NET con `actions/checkout`, `setup-dotnet`, build y tests.
 
 ## Decisiones
 
