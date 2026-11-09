@@ -11,3 +11,6 @@
 | 2 | `HTTP 422: Workflow does not have 'workflow_dispatch' trigger` y run de 0 s con la ruta del archivo como nombre | YAML inválido: `run: echo "Cuidado: producción"` tiene `: ` en texto sin comillas | Comillas alrededor de todo el valor o bloque `run: \|` |
 | 2 | Clave `steps:` repetida en un job | En YAML una clave no puede repetirse en el mismo bloque | Un solo `steps:` con todos los pasos |
 | 2 | `if: ${{ inputs.ambiente }} == 'prod'` siempre verdadero | Solo una parte iba en la expresión; el resto queda como texto no vacío | `if: inputs.ambiente == 'prod'` |
+| 3 | `The test source file ...\bin\Release\...\Catalogo.Tests.dll provided was not found` | `dotnet test --no-build -c Release` sin haber compilado antes en Release; solo existían binarios de Debug | `dotnet build -c Release` antes, con la misma configuración en build y test |
+| 3 | Ruta de `global-json-file` incompleta (`apps/global.json`) | Los pasos `uses:` no respetan `working-directory` | Ruta completa desde la raíz: `apps/catalogo/global.json` |
+| 3 | Caché sin ganancia neta | Pocos paquetes: bajar la caché cuesta lo mismo que bajarlos de nuget.org | Medir varios runs antes y después; mantenerla solo si rinde o rendirá |

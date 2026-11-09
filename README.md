@@ -16,8 +16,8 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 |---|--------|----------------|-----------------------|----------|-------|--------|
 | 1 | Anatomía de un workflow | Eventos, jobs, steps, runners y logs | Primer workflow escrito a mano y depurado desde los logs | — | 2 | terminado |
 | 2 | El lenguaje de Actions | Contextos, expresiones, `if`, variables, outputs y `workflow_dispatch` | Workflow que decide qué hacer según el evento y la rama | 1 | 3 | terminado |
-| 3 | CI de la API | `setup-dotnet`, tests, cobertura, artifacts y caché | CI de .NET con tiempos medidos antes y después de la caché | 2 | 3 | en curso |
-| 4 | Pipelines reales | Matrices, `needs`, service containers, `concurrency` y `timeout` | Tests de integración con Postgres en varias versiones | 3 | 3 | pendiente |
+| 3 | CI de la API | `setup-dotnet`, tests, cobertura, artifacts y caché | CI de .NET con tiempos medidos antes y después de la caché | 2 | 3 | terminado |
+| 4 | Pipelines reales | Matrices, `needs`, service containers, `concurrency` y `timeout` | Tests de integración con Postgres en varias versiones | 3 | 3 | en curso |
 | 5 | Flujo de PR | Rulesets, checks obligatorios y CODEOWNERS | `main` protegida: nada entra sin CI en verde | 4 | 3 | pendiente |
 
 ### Nivel 2: Entrega continua
@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 3, paso 4 (cierre): pasar la cobertura a otro job con `download-artifact` y exigir un mínimo. Medición de caché: sin caché Restaurar promedio 6.8 s (5 runs); con caché (hit en 5 de 5) Caché 1.6 s + Restaurar 5.2 s = 6.8 s. Sin ganancia neta: el proyecto tiene pocos paquetes y el restore se va en arrancar MSBuild, no en descargar.
+**Paso actual:** módulo 4, paso 1: matrices (`strategy.matrix`).
 
 ## Decisiones
 

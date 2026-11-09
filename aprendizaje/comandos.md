@@ -20,6 +20,9 @@
 | `gh workflow run` | Lanza un workflow con `workflow_dispatch` y sus inputs | `gh workflow run salidas.yaml -f nombre=ana -f ambiente=prod` |
 | `gh run cancel` | Cancela una ejecución en curso | `gh run cancel 42419022705` |
 | `gh auth status` | Muestra las cuentas de `gh` y cuál está activa | `gh auth status` |
+| `gh run download` | Descarga un artifact de un run | `gh run download 42548698652 -n cobertura` |
+| `gh cache list` | Lista las cachés guardadas del repo | `gh cache list` |
+| `dotnet test --collect` | Corre los tests midiendo cobertura | `dotnet test -c Release --no-build --collect:"XPlat Code Coverage" --results-directory ./resultados` |
 
 ## Docker
 
