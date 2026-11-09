@@ -19,6 +19,14 @@ jobs:
         with:
           global-json-file: apps/catalogo/global.json
 
+      - name: Caché de NuGet
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('apps/catalogo/**/*.csproj') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
       - name: Restaurar
         run: dotnet restore
 
