@@ -5,6 +5,11 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      minimo_ramas:
+        description: "Cobertura mínima de ramas (%)"
+        type: number
+        default: 80
 
 jobs:
   build-test:
@@ -42,3 +47,40 @@ jobs:
         with:
           name: cobertura
           path: apps/catalogo/resultados
+
+  cobertura-minima:
+    needs: build-test
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Descargar cobertura
+        uses: actions/download-artifact@v4
+        with:
+          name: cobertura
+          path: cobertura
+
+      - name: Verificar mínimo
+        env:
+          MINIMO_LINEAS: 80
+          MINIMO_RAMAS: ${{ inputs.minimo_ramas || 80 }}
+        run: |
+          archivo=$(find cobertura -name 'coverage.cobertura.xml' | head -1)
+          lineas=$(grep -oP '<coverage line-rate="\K[0-9.]+' "$archivo")
+          ramas=$(grep -oP '<coverage [^>]*branch-rate="\K[0-9.]+' "$archivo")
+          lineas=$(awk "BEGIN { printf \"%d\", $lineas * 100 }")
+          ramas=$(awk "BEGIN { printf \"%d\", $ramas * 100 }")
+
+          echo "Líneas: $lineas % (mínimo $MINIMO_LINEAS %)"
+          echo "Ramas:  $ramas % (mínimo $MINIMO_RAMAS %)"
+
+          {
+            echo "## Cobertura del catálogo"
+            echo "| Métrica | Valor | Mínimo |"
+            echo "|---|---|---|"
+            echo "| Líneas | $lineas % | $MINIMO_LINEAS % |"
+            echo "| Ramas | $ramas % | $MINIMO_RAMAS % |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$lineas" -lt "$MINIMO_LINEAS" ] || [ "$ramas" -lt "$MINIMO_RAMAS" ]; then
+            echo "::error::Cobertura por debajo del mínimo"
+            exit 1
+          fi
