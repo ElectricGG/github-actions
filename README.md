@@ -52,7 +52,7 @@ Duración estimada: 68 h guiadas, unas 6 a 8 semanas, más el proyecto final.
 
 Construir solo y de cero el CI/CD de un sistema distinto, con requisitos de seguridad, despliegue y escala. El enunciado se entrega al terminar la malla.
 
-**Paso actual:** módulo 3, paso 3: caché de NuGet con `actions/cache`. Línea base sin caché (5 runs): Restaurar 4–10 s, promedio 6.8 s, mediana 7 s; Compilar promedio 6.6 s; Tests 3–4 s.
+**Paso actual:** módulo 3, paso 4 (cierre): pasar la cobertura a otro job con `download-artifact` y exigir un mínimo. Medición de caché: sin caché Restaurar promedio 6.8 s (5 runs); con caché (hit en 5 de 5) Caché 1.6 s + Restaurar 5.2 s = 6.8 s. Sin ganancia neta: el proyecto tiene pocos paquetes y el restore se va en arrancar MSBuild, no en descargar.
 
 ## Decisiones
 
