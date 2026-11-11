@@ -43,7 +43,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cobertura
+          name: cobertura-${{ runner.os }}
           path: apps/catalogo/resultados
 
   cobertura-minima:
@@ -53,7 +53,7 @@ jobs:
       - name: Descargar cobertura
         uses: actions/download-artifact@v4
         with:
-          name: cobertura
+          name: cobertura-Linux
           path: cobertura
 
       - name: Verificar mínimo
