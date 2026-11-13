@@ -9,6 +9,7 @@ on:
 jobs:
   build-test:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-24.04, windows-2025]
     runs-on: ${{ matrix.os }}
@@ -35,6 +36,10 @@ jobs:
 
       - name: Compilar
         run: dotnet build -c Release --no-restore
+
+      - name: Fallo forzado (temporal)
+        if: runner.os == 'Windows'
+        run: exit 1
 
       - name: Tests
         run: dotnet test -c Release --no-build --collect:"XPlat Code Coverage" --results-directory ./resultados
